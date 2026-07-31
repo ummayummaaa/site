@@ -147,8 +147,8 @@
       align-self: flex-start;
       padding: 8px 13px;
       border-radius: 999px;
-      background: var(--warm-soft);
-      color: #8f5036;
+      background: var(--accent);
+      color: #ffffff;
       font-weight: 760;
       font-size: .9rem;
       margin-bottom: 20px;
@@ -272,15 +272,32 @@
     }
 
     main > section:nth-of-type(2) {
-      background: #e8f1f3;
+      background: linear-gradient(
+        180deg,
+        #fffdf9 0%,
+        #e8f1f3 14%,
+        #e8f1f3 86%,
+        #fffaf4 100%
+      );
     }
 
     main > section:nth-of-type(3) {
-      background: #fffaf4;
+      background: linear-gradient(
+        180deg,
+        #fffaf4 0%,
+        #fffaf4 72%,
+        #edf5f4 100%
+      );
     }
 
     main > section:nth-of-type(4) {
-      background: var(--accent-soft);
+      background: linear-gradient(
+        180deg,
+        #edf5f4 0%,
+        var(--accent-soft) 18%,
+        var(--accent-soft) 82%,
+        #fffdf9 100%
+      );
     }
 
     .section-title {
@@ -416,8 +433,8 @@
       margin-top: 20px;
       padding: 14px 16px;
       border-radius: 16px;
-      background: var(--warm-soft);
-      color: var(--accent);
+      background: var(--accent);
+      color: #ffffff;
       font-weight: 700;
     }
 
@@ -792,6 +809,23 @@
       background: var(--surface);
       border: 1px solid var(--border);
       box-shadow: var(--shadow);
+    }
+
+    .contact-card .section-title {
+      display: inline-block;
+      position: relative;
+      padding-bottom: 12px;
+    }
+
+    .contact-card .section-title::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 76px;
+      height: 5px;
+      border-radius: 999px;
+      background: var(--orange);
     }
 
     .contact-list {

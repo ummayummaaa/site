@@ -540,22 +540,27 @@
     }
 
     .info-list {
-      display: grid;
-      grid-template-columns: repeat(5, minmax(0, 1fr));
-      gap: 14px;
+      position: relative;
       margin-top: 22px;
     }
 
     .article-link {
-      min-height: 205px;
-      display: flex;
-      flex-direction: column;
-      padding: 20px;
+      min-height: 390px;
+      display: none;
+      grid-template-columns: minmax(0, 1.45fr) minmax(270px, .8fr);
+      grid-template-rows: 1fr auto auto 1fr;
+      padding: 0;
+      overflow: hidden;
       border: 1px solid #eadfd6;
-      border-radius: 18px;
+      border-radius: 26px;
       background: rgba(255,255,255,.94);
       box-shadow: 0 10px 24px rgba(66,45,31,.055);
       transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease;
+    }
+
+    .article-link.is-active {
+      display: grid;
+      animation: article-arrive .45s ease both;
     }
 
     .article-link:hover {
@@ -565,54 +570,137 @@
     }
 
     .article-icon {
+      display: none;
+    }
+
+    .article-icon img {
+      width: 40px;
+      height: 40px;
+      display: block;
+      object-fit: contain;
+      image-rendering: auto;
+    }
+
+    .article-link:nth-child(1) .article-icon img { transform: scale(1.8); }
+    .article-link:nth-child(2) .article-icon img,
+    .article-link:nth-child(3) .article-icon img { transform: scale(1.4); }
+
+    .article-link strong {
+      grid-column: 2;
+      grid-row: 2;
+      display: block;
+      padding: 0 34px;
+      font-size: clamp(1.45rem, 2.7vw, 2.15rem);
+      line-height: 1.18;
+    }
+
+    .article-summary {
+      grid-column: 2;
+      grid-row: 3;
+      padding: 14px 34px 0;
+      color: var(--muted);
+      font-size: 1rem;
+      line-height: 1.55;
+    }
+
+    .article-more {
+      grid-column: 2;
+      grid-row: 4;
+      align-self: start;
+      padding: 22px 34px 34px;
+      color: #d75f2e;
+      font-size: .95rem;
+      font-weight: 780;
+    }
+
+    .article-photo {
+      grid-column: 1;
+      grid-row: 1 / -1;
+      width: 100%;
+      height: 100%;
+      min-height: 390px;
+      display: block;
+      object-fit: cover;
+    }
+
+    .article-carousel-controls {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 14px;
+      margin-top: 18px;
+    }
+
+    .carousel-arrow,
+    .carousel-dot {
+      border: 0;
+      cursor: pointer;
+    }
+
+    .carousel-arrow {
       width: 44px;
       height: 44px;
       display: grid;
       place-items: center;
-      margin-bottom: 14px;
-      color: var(--orange);
-      border-radius: 14px;
-      background: #fff0e6;
-      font-size: 1.45rem;
-      line-height: 1;
+      border-radius: 50%;
+      background: var(--accent);
+      color: #fff;
+      font-size: 1.35rem;
+      transition: transform .18s ease, background .18s ease;
     }
 
-    .article-icon img {
-      display: none;
+    .carousel-arrow:hover { transform: translateY(-2px); }
+
+    .carousel-dots {
+      display: flex;
+      align-items: center;
+      gap: 8px;
     }
 
-    .article-icon::before { display: block; }
-    .article-link:nth-child(1) .article-icon::before { content: "🌡"; }
-    .article-link:nth-child(2) .article-icon::before { content: "👂"; }
-    .article-link:nth-child(3) .article-icon::before { content: "≋"; font-size: 1.8rem; font-weight: 850; }
-    .article-link:nth-child(4) .article-icon::before { content: "H"; font-size: 1.15rem; font-weight: 900; }
-    .article-link:nth-child(5) .article-icon::before { content: "✓"; font-size: 1.35rem; font-weight: 900; }
-
-    .article-link strong {
-      display: block;
-      margin-bottom: 8px;
-      line-height: 1.35;
+    .carousel-dot {
+      width: 10px;
+      height: 10px;
+      padding: 0;
+      border-radius: 999px;
+      background: #aec6cc;
+      transition: width .22s ease, background .22s ease;
     }
 
-    .article-summary {
-      color: var(--muted);
-      font-size: .94rem;
-      line-height: 1.5;
+    .carousel-dot.is-active {
+      width: 28px;
+      background: var(--orange);
     }
 
-    .article-more {
-      margin-top: auto;
-      padding-top: 16px;
-      color: #d75f2e;
-      font-size: .9rem;
-      font-weight: 780;
+    @keyframes article-arrive {
+      from { opacity: 0; transform: translateX(14px); }
+      to { opacity: 1; transform: translateX(0); }
     }
 
     .more-information {
-      margin: 18px 0 0;
-      text-align: center;
-      color: var(--muted);
+      display: flex;
+      justify-content: center;
+      margin: 22px 0 0;
+    }
+
+    .all-articles-link {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 48px;
+      padding: 0 20px;
+      border: 1px solid #bdd4d9;
+      border-radius: 999px;
+      background: rgba(255,255,255,.88);
+      color: var(--accent);
       font-size: .93rem;
+      font-weight: 780;
+      transition: transform .18s ease, border-color .18s ease, box-shadow .18s ease;
+    }
+
+    .all-articles-link:hover {
+      transform: translateY(-2px);
+      border-color: #8eb6be;
+      box-shadow: 0 10px 22px rgba(19,78,89,.1);
     }
 
     .guide-card {
@@ -904,14 +992,6 @@
         grid-template-columns: 1fr;
       }
 
-      .map-section {
-        grid-template-columns: 1fr;
-      }
-
-      .info-list {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-      }
-
       .pharmacy-box {
         grid-template-columns: repeat(2, 1fr);
       }
@@ -927,51 +1007,19 @@
       .guide-grid {
         grid-template-columns: 1fr;
       }
+
+      .article-link {
+        grid-template-columns: minmax(0, 1.15fr) minmax(250px, .85fr);
+      }
     }
 
     @media (max-width: 620px) {
-      html {
-        scroll-padding-top: 76px;
-      }
-
-      body {
-        overflow-x: hidden;
-        padding-bottom: calc(76px + env(safe-area-inset-bottom));
-      }
-
       .container {
-        width: calc(100% - 28px);
+        width: min(100% - 22px, 1160px);
       }
 
       .nav {
-        min-height: 64px;
-        gap: 10px;
-      }
-
-      .brand {
-        min-width: 0;
-      }
-
-      .brand-name {
-        font-size: .98rem;
-        white-space: nowrap;
-      }
-
-      .brand-title {
-        margin-top: 2px;
-        font-size: .72rem;
-      }
-
-      .nav-right {
-        flex: 0 0 auto;
-        gap: 8px;
-      }
-
-      .lang-btn {
-        min-width: 37px;
-        min-height: 38px;
-        padding: 7px 9px;
-        font-size: .78rem;
+        min-height: 66px;
       }
 
       .call-small {
@@ -979,103 +1027,43 @@
       }
 
       .hero {
-        padding: 14px 0 24px;
+        padding-top: 18px;
       }
 
       .hero-shell {
-        min-height: 0;
-        border-radius: 24px;
+        border-radius: 26px;
       }
 
       .hero-copy {
-        padding: 26px 18px 22px;
-        justify-content: flex-start;
-      }
-
-      .eyebrow {
-        margin-bottom: 16px;
-        padding: 7px 11px;
-        border-radius: 12px;
-        font-size: .78rem;
-        line-height: 1.35;
+        padding: 34px 20px 24px;
       }
 
       h1 {
-        max-width: 100%;
-        font-size: clamp(2.25rem, 11.4vw, 2.85rem);
-        line-height: 1.01;
-        letter-spacing: -0.052em;
-        overflow-wrap: normal;
-        hyphens: none;
+        font-size: 3rem;
       }
 
       .lead {
-        margin: 18px 0 20px;
-        font-size: 1rem;
-        line-height: 1.55;
-      }
-
-      .facts {
-        gap: 8px;
-        margin-bottom: 20px;
-      }
-
-      .fact {
-        padding: 7px 10px;
-        font-size: .8rem;
-        line-height: 1.35;
+        font-size: 1.05rem;
       }
 
       .hero-actions .button {
         width: 100%;
       }
 
-      .hero-actions {
-        display: grid;
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-        gap: 9px;
-      }
-
-      .hero-actions .button {
-        min-height: 50px;
-        padding: 0 12px;
-        border-radius: 14px;
-      }
-
-      .hero-actions .button.primary {
-        grid-column: 1 / -1;
-      }
-
       .hero-photo-wrap {
-        min-height: 0;
-        height: clamp(300px, 86vw, 365px);
-        margin: 0 10px 10px;
-        border-radius: 18px;
+        min-height: 340px;
+        margin: 0 14px 14px;
+        border-radius: 20px;
       }
 
       .hero-photo {
-        object-position: 52% 18%;
-      }
-
-      .hero-photo-wrap::before {
-        background: linear-gradient(180deg, rgba(255,253,249,.42) 0%, rgba(255,253,249,0) 22%);
+        object-position: 52% 20%;
       }
 
       .photo-caption {
-        left: 10px;
-        right: 10px;
-        bottom: 10px;
-        min-width: 0;
-        padding: 11px 13px;
-        border-radius: 14px;
-      }
-
-      .photo-caption strong {
-        font-size: .94rem;
-      }
-
-      .photo-caption span {
-        font-size: .82rem;
+        left: 14px;
+        right: 14px;
+        bottom: 14px;
       }
 
       .benefits,
@@ -1083,116 +1071,37 @@
         grid-template-columns: 1fr;
       }
 
-      section {
-        padding: 32px 0;
-      }
-
-      .section-title {
-        margin-bottom: 10px;
-        font-size: clamp(1.8rem, 8.8vw, 2.35rem);
-        line-height: 1.08;
-      }
-
-      .section-intro {
-        margin-bottom: 22px;
-      }
-
-      .benefit,
-      .service-item {
-        padding: 18px;
-      }
-
-      .benefit-number {
-        margin-bottom: 12px;
-      }
-
-      .map-copy,
-      .about-card,
-      .info-card {
-        padding: 21px 18px;
-        border-radius: 22px;
-      }
-
-      .map-note {
-        margin-top: 16px;
-        padding: 12px 14px;
-        border-radius: 13px;
-        font-size: .92rem;
-      }
-
-      .map-features {
-        margin-top: 18px;
-        padding-top: 18px;
-        gap: 14px;
-      }
-
-      .map-feature {
-        padding-left: 13px;
-      }
-
-      .map-feature strong {
-        font-size: .98rem;
-      }
-
-      .map-feature span {
-        font-size: .9rem;
-      }
-
-      .map-card,
-      .map-card iframe {
-        min-height: 320px;
-      }
-
-      .map-card {
-        border-radius: 22px;
-      }
-
-      .about-point,
-      .emergency {
-        padding: 14px;
-        border-radius: 14px;
-      }
-
-      .info-list {
-        grid-template-columns: 1fr;
-        gap: 11px;
-        margin-top: 18px;
-      }
-
-      .article-link {
+      .article-link,
+      .article-link.is-active {
         min-height: 0;
-        display: grid;
-        grid-template-columns: 44px minmax(0, 1fr);
-        column-gap: 13px;
-        padding: 17px 16px;
-        border-radius: 15px;
-        box-shadow: 0 7px 18px rgba(39, 63, 68, .07);
+        grid-template-columns: 1fr;
+        grid-template-rows: auto auto auto auto;
       }
 
-      .article-icon {
-        grid-row: 1 / span 3;
-        margin: 0;
-      }
-
-      .article-link strong,
-      .article-summary,
-      .article-more {
-        grid-column: 2;
+      .article-photo {
+        grid-column: 1;
+        grid-row: 1;
+        min-height: 0;
+        aspect-ratio: 16 / 10;
       }
 
       .article-link strong {
-        margin-bottom: 5px;
-        font-size: 1rem;
-        line-height: 1.3;
+        grid-column: 1;
+        grid-row: 2;
+        padding: 24px 22px 0;
+        font-size: 1.55rem;
       }
 
       .article-summary {
-        font-size: .88rem;
+        grid-column: 1;
+        grid-row: 3;
+        padding: 12px 22px 0;
       }
 
       .article-more {
-        margin-top: 8px;
-        padding-top: 0;
+        grid-column: 1;
+        grid-row: 4;
+        padding: 18px 22px 24px;
       }
 
       .pharmacy-box {
@@ -1201,32 +1110,17 @@
 
       .pharmacy-intro {
         grid-column: auto;
-        gap: 12px;
-        padding: 16px;
-      }
-
-      .pharmacy-symbol {
-        width: 48px;
-        height: 48px;
-        font-size: 1.7rem;
+        padding: 18px;
       }
 
       .pharmacy-resource,
       .pharmacy-resource:nth-child(2) {
-        min-width: 0;
         border-top: 1px solid rgba(18,63,73,.12);
         border-left: 0;
-        padding: 14px 16px;
-      }
-
-      .pharmacy-resource a,
-      .contact-item {
-        overflow-wrap: anywhere;
       }
 
       .guide-card {
-        padding: 18px;
-        border-radius: 18px;
+        padding: 20px;
       }
 
       .guide-heading {
@@ -1237,56 +1131,39 @@
         display: grid;
       }
 
-      .guide-action {
-        min-height: 48px;
-        padding: 0 12px;
+      section {
+        padding: 38px 0;
       }
 
       .panel,
       .contact-card {
-        padding: 20px 18px;
-        border-radius: 22px;
-      }
-
-      .contact-card {
-        gap: 22px;
-      }
-
-      .contact-item {
-        padding: 13px 14px;
-        font-size: .92rem;
-      }
-
-      footer {
-        padding: 18px 0 10px;
+        padding: 23px;
       }
 
       .mobile-bar {
         position: fixed;
-        left: max(9px, env(safe-area-inset-left));
-        right: max(9px, env(safe-area-inset-right));
-        bottom: max(8px, env(safe-area-inset-bottom));
+        left: 10px;
+        right: 10px;
+        bottom: 10px;
         z-index: 50;
         display: grid;
         grid-template-columns: repeat(3, 1fr);
-        gap: 6px;
-        padding: 7px;
-        background: rgba(255,255,255,.96);
+        gap: 8px;
+        padding: 9px;
+        background: rgba(255,255,255,.94);
         border: 1px solid var(--border);
-        border-radius: 17px;
+        border-radius: 18px;
         box-shadow: 0 14px 35px rgba(15,49,58,.18);
         backdrop-filter: blur(14px);
       }
 
       .mobile-bar a {
-        min-width: 0;
-        min-height: 48px;
+        min-height: 45px;
         display: grid;
         place-items: center;
-        padding: 0 6px;
-        border-radius: 11px;
+        border-radius: 12px;
         background: var(--bg);
-        font-size: clamp(.72rem, 3.4vw, .84rem);
+        font-size: .82rem;
         font-weight: 780;
       }
 
@@ -1294,55 +1171,10 @@
         background: var(--accent);
         color: #fff;
       }
-
-      .mobile-bar a:nth-child(2) {
-        background: #25d366;
-        color: #fff;
-      }
-
-      .mobile-bar a:nth-child(3) {
-        background: #7360f2;
-        color: #fff;
-      }
     }
 
-    @media (max-width: 374px) {
-      .container {
-        width: calc(100% - 20px);
-      }
-
-      .brand-title {
-        display: none;
-      }
-
-      .lang-btn {
-        min-width: 35px;
-        padding-inline: 7px;
-      }
-
-      .hero-copy {
-        padding-inline: 15px;
-      }
-
-      h1 {
-        font-size: 2.18rem;
-      }
-
-      .hero-actions {
-        grid-template-columns: 1fr;
-      }
-
-      .hero-actions .button.primary {
-        grid-column: auto;
-      }
-
-      .map-copy,
-      .about-card,
-      .info-card,
-      .panel,
-      .contact-card {
-        padding-inline: 16px;
-      }
+    @media (prefers-reduced-motion: reduce) {
+      .article-link.is-active { animation: none; }
     }
   </style>
 </head>
@@ -1492,7 +1324,13 @@
             </a>
           </div>
 
-          <p class="more-information" data-i18n="more_information">More practical medical guidance will be added to the Information section.</p>
+          <div class="article-carousel-controls" aria-label="Article carousel">
+            <button class="carousel-arrow carousel-prev" type="button" aria-label="Previous article">←</button>
+            <div class="carousel-dots" aria-label="Choose an article"></div>
+            <button class="carousel-arrow carousel-next" type="button" aria-label="Next article">→</button>
+          </div>
+
+          <p class="more-information"><a class="all-articles-link" href="articles/" data-i18n="more_information">View all useful articles →</a></p>
 
           <div class="pharmacy-box" id="pharmacies">
             <div class="pharmacy-intro">
@@ -1583,7 +1421,7 @@
 
         <p class="disclaimer" data-i18n="disclaimer">
           This website does not provide emergency medical services and does not replace hospital assessment when urgent care is required.
-        </p>
+        </div>
       </div>
     </section>
   </main>
@@ -1653,7 +1491,7 @@
         about_point2: "Support in English, Greek, Russian and Serbian",
         about_point3: "Special focus on pain syndromes and acupuncture",
         useful_title: "Useful information",
-        useful_text: "Practical medical guidance for travellers in Greece. The first articles will be added here gradually.",
+        useful_text: "Practical medical guidance for travellers in Greece. Five key articles are shown here; explore the full library for more topics.",
         article1_title: "Fever in adults and children",
         article1_text: "When to be concerned and what you can do at home.",
         article2_title: "Ear pain while on vacation",
@@ -1684,7 +1522,7 @@
         article5_title: "Travel health insurance",
         article5_text: "What is usually covered and what is not.",
         read_more: "Read more →",
-        more_information: "More practical medical guidance will be added to the Information section.",
+        more_information: "View all useful articles →",
         pharmacy_title: "On-duty pharmacies in Athens",
         pharmacy_text: "Check which pharmacies are open now or on duty near your location.",
         pharmacy_official_name: "Pharmaceutical Association of Attica",
@@ -1758,7 +1596,7 @@
         about_point2: "Εξυπηρέτηση στα ελληνικά, αγγλικά, ρωσικά και σερβικά",
         about_point3: "Εξειδίκευση στα σύνδρομα πόνου και στον βελονισμό",
         useful_title: "Χρήσιμες πληροφορίες",
-        useful_text: "Πρακτικές ιατρικές πληροφορίες για ταξιδιώτες στην Ελλάδα. Τα πρώτα άρθρα θα προστεθούν σταδιακά.",
+        useful_text: "Πρακτικές ιατρικές πληροφορίες για ταξιδιώτες στην Ελλάδα. Εδώ εμφανίζονται πέντε βασικά άρθρα· δείτε την πλήρη συλλογή για περισσότερα θέματα.",
         article1_title: "Πυρετός σε ενήλικες και παιδιά",
         article1_text: "Πότε χρειάζεται προσοχή και τι μπορείτε να κάνετε στο σπίτι.",
         article2_title: "Πόνος στο αυτί στις διακοπές",
@@ -1789,7 +1627,7 @@
         article5_title: "Ταξιδιωτική ασφάλιση υγείας",
         article5_text: "Τι καλύπτεται συνήθως και τι όχι.",
         read_more: "Διαβάστε περισσότερα →",
-        more_information: "Περισσότερες πρακτικές ιατρικές πληροφορίες θα προστεθούν στην ενότητα Πληροφορίες.",
+        more_information: "Δείτε όλα τα χρήσιμα άρθρα →",
         pharmacy_title: "Εφημερεύοντα φαρμακεία στην Αθήνα",
         pharmacy_text: "Δείτε ποια φαρμακεία είναι ανοιχτά ή εφημερεύουν κοντά στην τοποθεσία σας.",
         pharmacy_official_name: "Φαρμακευτικός Σύλλογος Αττικής",
@@ -1863,7 +1701,7 @@
         about_point2: "Помощь на русском, греческом, английском и сербском языках",
         about_point3: "Специализация на болевых синдромах и иглоукалывании",
         useful_title: "Полезная информация",
-        useful_text: "Практические медицинские рекомендации для путешественников в Греции. Первые статьи будут добавляться постепенно.",
+        useful_text: "Практические медицинские рекомендации для путешественников в Греции. Здесь показаны пять основных статей, а в полном разделе есть и другие темы.",
         article1_title: "Температура у взрослых и детей",
         article1_text: "Когда стоит беспокоиться и что можно сделать дома.",
         article2_title: "Боль в ухе во время отпуска",
@@ -1894,7 +1732,7 @@
         article5_title: "Туристическая медицинская страховка",
         article5_text: "Что обычно покрывается, а что нет.",
         read_more: "Читать дальше →",
-        more_information: "Дополнительные практические рекомендации будут добавляться в раздел «Полезная информация».",
+        more_information: "Все полезные статьи →",
         pharmacy_title: "Дежурные аптеки Афин",
         pharmacy_text: "Проверьте, какие аптеки сейчас открыты или дежурят рядом с вами.",
         pharmacy_official_name: "Фармацевтическая ассоциация Аттики",
@@ -1932,6 +1770,8 @@
       document.querySelectorAll(".lang-btn").forEach((button) => {
         button.classList.toggle("active", button.dataset.lang === lang);
       });
+
+      updateCarouselLanguage(lang);
     }
 
     document.querySelectorAll(".lang-btn").forEach((button) => {
@@ -1947,18 +1787,112 @@
       "articles/article.html?topic=insurance"
     ];
 
+    const articlePhotos = [
+      "assets/article-fever-carousel-v1.jpg",
+      "assets/article-ear-carousel-v1.jpg",
+      "assets/article-diarrhoea-carousel-v1.jpg",
+      "assets/article-hospital-carousel-v1.jpg",
+      "assets/article-insurance-carousel-v1.jpg"
+    ];
+
+    const carouselText = {
+      en: { previous: "Previous article", next: "Next article", choose: "Choose an article", item: "Article" },
+      el: { previous: "Προηγούμενο άρθρο", next: "Επόμενο άρθρο", choose: "Επιλέξτε άρθρο", item: "Άρθρο" },
+      ru: { previous: "Предыдущая статья", next: "Следующая статья", choose: "Выбрать статью", item: "Статья" }
+    };
+
+    const dotsBox = document.querySelector(".carousel-dots");
+    const previousArticleButton = document.querySelector(".carousel-prev");
+    const nextArticleButton = document.querySelector(".carousel-next");
+    const carouselRegion = document.querySelector(".info-list");
+    let activeArticle = 0;
+    let articleTimer;
+    let touchStartX = 0;
+
     articleCards.forEach((card, index) => {
       card.href = articleRoutes[index];
+      const photo = document.createElement("img");
+      photo.className = "article-photo";
+      photo.src = articlePhotos[index];
+      photo.loading = index === 0 ? "eager" : "lazy";
+      photo.decoding = "async";
+      card.prepend(photo);
+
+      const dot = document.createElement("button");
+      dot.type = "button";
+      dot.className = "carousel-dot";
+      dot.addEventListener("click", () => showArticle(index));
+      dotsBox.append(dot);
     });
 
-    articleCards[0].querySelector("img").src = "assets/fever-orange-transparent.png";
-    articleCards[1].querySelector("img").src = "assets/ear-orange-transparent.png";
-    articleCards[2].querySelector("img").src = "assets/diarrhoea-orange-transparent.png";
-    articleCards[3].querySelector("img").src = "assets/hospital-orange.png";
-    articleCards[4].querySelector("img").src = "assets/insurance-orange.png";
+    const carouselDots = [...document.querySelectorAll(".carousel-dot")];
+
+    function showArticle(index, restart = true) {
+      activeArticle = (index + articleCards.length) % articleCards.length;
+      articleCards.forEach((card, cardIndex) => {
+        const isActive = cardIndex === activeArticle;
+        card.classList.toggle("is-active", isActive);
+        card.setAttribute("aria-hidden", String(!isActive));
+      });
+      carouselDots.forEach((dot, dotIndex) => {
+        const isActive = dotIndex === activeArticle;
+        dot.classList.toggle("is-active", isActive);
+        dot.setAttribute("aria-current", isActive ? "true" : "false");
+      });
+      if (restart) restartArticleTimer();
+    }
+
+    function updateCarouselLanguage(lang) {
+      if (!articleCards.length) return;
+      const labels = carouselText[lang] || carouselText.en;
+      previousArticleButton.setAttribute("aria-label", labels.previous);
+      nextArticleButton.setAttribute("aria-label", labels.next);
+      dotsBox.setAttribute("aria-label", labels.choose);
+      articleCards.forEach((card, index) => {
+        const title = card.querySelector("strong").textContent.trim();
+        card.querySelector(".article-photo").alt = title;
+        carouselDots[index].setAttribute("aria-label", `${labels.item} ${index + 1}: ${title}`);
+      });
+    }
+
+    function stopArticleTimer() {
+      window.clearInterval(articleTimer);
+    }
+
+    function startArticleTimer() {
+      if (window.matchMedia("(prefers-reduced-motion: reduce)").matches || document.hidden) return;
+      stopArticleTimer();
+      articleTimer = window.setInterval(() => showArticle(activeArticle + 1, false), 5500);
+    }
+
+    function restartArticleTimer() {
+      stopArticleTimer();
+      startArticleTimer();
+    }
+
+    previousArticleButton.addEventListener("click", () => showArticle(activeArticle - 1));
+    nextArticleButton.addEventListener("click", () => showArticle(activeArticle + 1));
+    carouselRegion.addEventListener("mouseenter", stopArticleTimer);
+    carouselRegion.addEventListener("mouseleave", startArticleTimer);
+    carouselRegion.addEventListener("focusin", stopArticleTimer);
+    carouselRegion.addEventListener("focusout", (event) => {
+      if (!carouselRegion.contains(event.relatedTarget)) startArticleTimer();
+    });
+    carouselRegion.addEventListener("touchstart", (event) => {
+      touchStartX = event.changedTouches[0].clientX;
+      stopArticleTimer();
+    }, { passive: true });
+    carouselRegion.addEventListener("touchend", (event) => {
+      const distance = event.changedTouches[0].clientX - touchStartX;
+      if (Math.abs(distance) > 45) showArticle(activeArticle + (distance < 0 ? 1 : -1));
+      else startArticleTimer();
+    }, { passive: true });
+    document.addEventListener("visibilitychange", () => document.hidden ? stopArticleTimer() : startArticleTimer());
 
     document.getElementById("year").textContent = new Date().getFullYear();
+    showArticle(0, false);
     setLanguage(localStorage.getItem("siteLanguage") || "en");
+    startArticleTimer();
   </script>
 </body>
 </html>

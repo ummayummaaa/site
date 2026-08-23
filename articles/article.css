@@ -157,6 +157,34 @@ h1 {
   font-size: 1.08rem;
 }
 
+.article-media {
+  margin: 28px 0 0;
+}
+
+.article-media img {
+  width: 100%;
+  display: block;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  border: 1px solid var(--border);
+  border-radius: 22px;
+  background: #edf5f5;
+}
+
+.article-media figcaption {
+  margin-top: 9px;
+  color: var(--muted);
+  font-size: .82rem;
+  line-height: 1.45;
+}
+
+.inline-media {
+  grid-column: 1 / -1;
+  margin: 2px 0;
+}
+
+.inline-media img { max-height: 480px; object-fit: contain; }
+
 .article-body {
   padding: 36px 48px 44px;
 }
@@ -189,6 +217,61 @@ h1 {
 }
 
 .content-block li + li { margin-top: 9px; }
+
+.article-shell.long-form .content-grid {
+  display: block;
+  max-width: 760px;
+  margin: 0 auto;
+}
+
+.article-shell.long-form .content-block {
+  padding: 34px 0;
+  border: 0;
+  border-top: 1px solid var(--border);
+  border-radius: 0;
+  background: transparent;
+}
+
+.article-shell.long-form .content-block:first-child {
+  padding-top: 4px;
+  border-top: 0;
+}
+
+.article-shell.long-form .content-block h2 {
+  margin-bottom: 16px;
+  color: var(--text);
+  font-size: clamp(1.35rem, 3vw, 1.65rem);
+  letter-spacing: -.025em;
+}
+
+.prose-section p {
+  margin: 0;
+  color: #45575d;
+  font-size: 1rem;
+  line-height: 1.78;
+}
+
+.prose-section p + p {
+  margin-top: 15px;
+}
+
+.article-shell.long-form .inline-media {
+  margin: 12px 0 24px;
+  padding: 0;
+}
+
+.article-shell.long-form .inline-media figcaption {
+  padding: 0 2px;
+}
+
+.article-shell.long-form .emergency-panel,
+.article-shell.long-form .actions,
+.article-shell.long-form .note,
+.article-shell.long-form .sources {
+  max-width: 760px;
+  margin-left: auto;
+  margin-right: auto;
+}
 
 .emergency-panel {
   margin-top: 18px;
@@ -275,7 +358,8 @@ footer {
 }
 
 @media (max-width: 760px) {
-  .content-grid { grid-template-columns: 1fr; }
+  .content-grid,
+  .article-shell.long-form .content-grid { grid-template-columns: 1fr; }
 
   .article-hero,
   .article-body {
@@ -293,5 +377,7 @@ footer {
   .article-hero { padding: 32px 21px 28px; }
   .article-body { padding: 24px 21px 30px; }
   h1 { font-size: 2.55rem; }
+  .article-media { margin-top: 22px; }
+  .article-media img { border-radius: 16px; }
   .actions { display: grid; }
 }

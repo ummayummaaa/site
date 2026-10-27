@@ -1,0 +1,3 @@
+# Keep editable drafts in Git without publishing them through GitHub Pages.
+exclude:
+  - _drafts

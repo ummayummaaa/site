@@ -3,3 +3,6 @@ _drafts/
 _config.yml
 .git/
 .assetsignore
+wrangler.jsonc
+.wrangler/
+node_modules/

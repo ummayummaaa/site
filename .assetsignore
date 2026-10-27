@@ -1,0 +1,5 @@
+# Keep unpublished sources and repository configuration out of Cloudflare static assets.
+_drafts/
+_config.yml
+.git/
+.assetsignore

@@ -827,27 +827,36 @@
     }
 
     .pharmacy-box {
-      margin-top: 22px;
-      display: grid;
-      grid-template-columns: minmax(240px, 1.15fr) repeat(2, minmax(0, 1fr));
-      gap: 14px;
-      padding: 20px;
-      border: 1px solid #d8e7e8;
+      margin-top: 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 28px;
+      padding: 30px 32px;
+      border: 1px solid #cbdedc;
       border-radius: 24px;
-      background: #f2f8f7;
+      background: linear-gradient(115deg, #fffefa 0%, #f2f8f6 65%, #e5f1ef 100%);
+      box-shadow: 0 10px 28px rgba(18,63,73,.045);
+      text-decoration: none;
+      transition: border-color .2s, box-shadow .2s;
+      scroll-margin-top: 100px;
     }
-    .hospital-box { margin-top: 16px; background: #fcf6ee; border-color: #ead9c8; }
-    .pharmacy-intro { display: flex; gap: 16px; align-items: center; padding: 6px 10px 6px 2px; min-width: 0; }
-    .pharmacy-symbol { width: 48px; height: 48px; flex: 0 0 48px; display: grid; place-items: center; border-radius: 16px; background: #d8eeeb; color: #0d6268; font-size: 1.8rem; font-weight: 800; }
-    .hospital-symbol { background: #f5dfcb; color: #a34f31; font-size: 1.3rem; }
-    .pharmacy-box h3 { margin: 0 0 7px; color: #0e5d63; font-size: 1.06rem; line-height: 1.3; }
-    .pharmacy-box p { margin: 0; color: var(--muted); font-size: .88rem; line-height: 1.5; }
-    .pharmacy-resource { display: flex; flex-direction: column; align-items: flex-start; justify-content: center; min-width: 0; padding: 20px; border: 1px solid rgba(18,63,73,.1); border-radius: 16px; background: rgba(255,255,255,.88); }
-    .pharmacy-resource strong { font-size: .96rem; line-height: 1.35; }
-    .pharmacy-resource span { margin: 5px 0 16px; color: var(--muted); font-size: .82rem; line-height: 1.45; }
-    .pharmacy-resource a { color: #0f6670; font-size: .86rem; font-weight: 780; text-decoration: none; padding: 7px 0; }
-    .pharmacy-resource a:hover { text-decoration: underline; text-underline-offset: 4px; }
-    .hospital-box .pharmacy-resource:first-of-type a { font-weight: 800; }
+    .pharmacy-box:hover { border-color: #91b8b4; box-shadow: 0 14px 30px rgba(18,63,73,.09); }
+    .pharmacy-box:focus-visible { outline: 3px solid #0d6268; outline-offset: 5px; }
+    .pharmacy-intro { display: flex; gap: 20px; align-items: center; min-width: 0; }
+    .pharmacy-symbol { width: 64px; height: 64px; flex: 0 0 64px; display: grid; place-items: center; border-radius: 20px; background: #0d4a53; color: #fff; box-shadow: 0 6px 14px rgba(13,74,83,.12); }
+    .pharmacy-box h3 { margin: 0 0 5px; color: #142f34; font-size: 1.4rem; font-weight: 800; line-height: 1.25; letter-spacing: -.025em; }
+    .pharmacy-box p { margin: 0; color: #617378; font-size: .92rem; line-height: 1.5; }
+    .duty-location { display: block; margin-bottom: 7px; color: #397779; font-size: .68rem; font-weight: 800; letter-spacing: .13em; text-transform: uppercase; }
+    .duty-open { flex-shrink: 0; display: inline-flex; align-items: center; justify-content: center; gap: 14px; padding: 13px 20px; border-radius: 999px; background: #0d4a53; color: white; font-size: .88rem; font-weight: 750; white-space: nowrap; }
+    @media (max-width: 700px) {
+      .pharmacy-box { align-items: stretch; flex-direction: column; gap: 22px; padding: 24px; }
+      .pharmacy-intro { gap: 16px; }
+      .pharmacy-symbol { width: 52px; height: 52px; flex-basis: 52px; border-radius: 17px; }
+      .pharmacy-box h3 { font-size: 1.25rem; }
+      .pharmacy-box p { font-size: .85rem; }
+      .duty-open { align-self: flex-start; margin-left: 68px; }
+    }
 
     .emergency {
       margin-top: 20px;
@@ -950,7 +959,7 @@
       }
 
       .pharmacy-box {
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: 1fr;
       }
 
       .pharmacy-intro {
@@ -1253,47 +1262,17 @@
 
           <p class="more-information"><a class="all-articles-link" href="articles/" data-i18n="more_information">View all useful articles →</a></p>
 
-          <div class="pharmacy-box" id="pharmacies">
+          <a class="pharmacy-box" id="pharmacies" href="/hospitals/">
             <div class="pharmacy-intro">
-              <div class="pharmacy-symbol" aria-hidden="true">+</div>
+              <div class="pharmacy-symbol" aria-hidden="true"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" focusable="false"><path d="M20 10c0 6-8 11-8 11S4 16 4 10a8 8 0 1 1 16 0Z"/><path d="M12 6v8m-4-4h8"/></svg></div>
               <div>
-                <h3 data-i18n="pharmacy_title">On-duty pharmacies in Athens</h3>
-                <p data-i18n="pharmacy_text">Find a pharmacy open now.</p>
+                <span class="duty-location" data-i18n="hospital_text">Athens and Attica</span>
+                <h3 data-i18n="hospital_title">On-duty services</h3>
+                <p data-i18n="hospital_service_text">On-duty hospitals: specialties, hours and phone numbers</p>
               </div>
             </div>
-            <div class="pharmacy-resource">
-              <strong data-i18n="pharmacy_official_name">Pharmaceutical Association of Attica</strong>
-              <span data-i18n="official_site">Official service</span>
-              <a href="https://fsa-efimeries.gr/" target="_blank" rel="noopener">fsa-efimeries.gr ↗</a>
-            </div>
-            <div class="pharmacy-resource">
-              <strong>Vrisko.gr</strong>
-              <span data-i18n="on_duty_label">On-duty pharmacies</span>
-              <a href="https://www.vrisko.gr/efimeries-farmakeion/athina/" target="_blank" rel="noopener">vrisko.gr ↗</a>
-            </div>
-
-          </div>
-
-          <div class="pharmacy-box hospital-box">
-            <div class="pharmacy-intro">
-              <div class="pharmacy-symbol hospital-symbol" aria-hidden="true">H</div>
-              <div>
-                <h3 data-i18n="hospital_title">On-duty hospitals in Athens</h3>
-                <p data-i18n="hospital_text">Find a hospital on duty.</p>
-              </div>
-            </div>
-            <div class="pharmacy-resource">
-              <strong data-i18n="hospital_service">Duty map</strong>
-              <span data-i18n="hospital_service_text">Specialties, hours and phone numbers</span>
-              <a href="/hospitals/" data-i18n="hospital_open">Open map →</a>
-            </div>
-            <div class="pharmacy-resource">
-              <strong>Efimeries.gov.gr</strong>
-              <span data-i18n="hospital_search_label">Hospital duty search</span>
-              <a href="https://efimeries.gov.gr/" target="_blank" rel="noopener" data-i18n="hospital_search_open">Open search ↗</a>
-            </div>
-
-          </div>
+            <span class="duty-open" data-i18n="hospital_open">Open map →</span>
+          </a>
         </div>
       </div>
     </section>
@@ -1433,11 +1412,11 @@
         pharmacy_official_name: "Pharmaceutical Association of Attica",
         official_site: "Official service",
         on_duty_label: "On-duty pharmacies",
-        hospital_title: "On-duty hospitals in Athens",
+        hospital_title: "On-duty services",
         hospital_service: "Duty map",
-        hospital_service_text: "Specialties, hours and phone numbers",
+        hospital_service_text: "On-duty hospitals: specialties, hours and phone numbers",
         hospital_open: "Open map →",
-        hospital_text: "Find a hospital on duty.",
+        hospital_text: "Athens and Attica",
         hospital_ministry: "Ministry of Health",
         hospital_official_label: "Official duty schedule",
         hospital_search_label: "Hospital duty search",
@@ -1534,11 +1513,11 @@
         pharmacy_official_name: "Φαρμακευτικός Σύλλογος Αττικής",
         official_site: "Επίσημη υπηρεσία",
         on_duty_label: "Εφημερεύοντα φαρμακεία",
-        hospital_title: "Εφημερεύοντα νοσοκομεία στην Αθήνα",
+        hospital_title: "Εφημερίες",
         hospital_service: "Χάρτης εφημεριών",
-        hospital_service_text: "Ειδικότητες, ώρες και τηλέφωνα",
+        hospital_service_text: "Εφημερεύοντα νοσοκομεία: ειδικότητες, ώρες και τηλέφωνα",
         hospital_open: "Άνοιγμα χάρτη →",
-        hospital_text: "Βρείτε εφημερεύον νοσοκομείο.",
+        hospital_text: "Αθήνα και Αττική",
         hospital_ministry: "Υπουργείο Υγείας",
         hospital_official_label: "Επίσημο πρόγραμμα εφημεριών",
         hospital_search_label: "Αναζήτηση νοσοκομείου",
@@ -1635,11 +1614,11 @@
         pharmacy_official_name: "Фармацевтическая ассоциация Аттики",
         official_site: "Официальный сервис",
         on_duty_label: "Дежурные аптеки",
-        hospital_title: "Дежурные больницы Афин",
+        hospital_title: "Дежурства",
         hospital_service: "Карта дежурств",
-        hospital_service_text: "Специальности, часы и телефоны",
+        hospital_service_text: "Дежурные больницы: специальности, часы и телефоны",
         hospital_open: "Открыть карту →",
-        hospital_text: "Найдите дежурную больницу.",
+        hospital_text: "Афины и Аттика",
         hospital_ministry: "Министерство здравоохранения",
         hospital_official_label: "Официальный график дежурств",
         hospital_search_label: "Поиск дежурной больницы",

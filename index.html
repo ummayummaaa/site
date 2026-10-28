@@ -829,76 +829,25 @@
     .pharmacy-box {
       margin-top: 22px;
       display: grid;
-      grid-template-columns: 1.3fr repeat(3, .8fr);
-      overflow: hidden;
+      grid-template-columns: minmax(240px, 1.15fr) repeat(2, minmax(0, 1fr));
+      gap: 14px;
+      padding: 20px;
       border: 1px solid #d8e7e8;
-      border-radius: 20px;
-      background: linear-gradient(90deg, #e7f3f2 0%, #f7fbfa 65%, #fffaf4 100%);
-      box-shadow: 0 10px 26px rgba(18,63,73,.06);
+      border-radius: 24px;
+      background: #f2f8f7;
     }
-
-    .hospital-box {
-      display: block;
-      margin-top: 14px;
-      background: linear-gradient(90deg, #f6ebdd 0%, #fffaf4 65%, #ffffff 100%);
-      border-color: #ead9c8;
-    }
-
-    .pharmacy-intro {
-      display: grid;
-      grid-template-columns: auto 1fr;
-      gap: 15px;
-      align-items: center;
-      padding: 20px 22px;
-    }
-
-    .pharmacy-symbol {
-      width: 56px;
-      height: 56px;
-      display: grid;
-      place-items: center;
-      border-radius: 50%;
-      background: #cfe8e6;
-      color: #0c7478;
-      font-size: 2rem;
-      font-weight: 900;
-    }
-
-    .hospital-box .pharmacy-resource {
-      border-left: 0;
-      border-top: 1px solid rgba(18,63,73,.12);
-    }
-
-    .hospital-symbol {
-      background: #f3d9c9;
-      color: #a34f31;
-      font-size: 1.45rem;
-    }
-
-    .pharmacy-box h3 {
-      margin: 0 0 4px;
-      color: #0e5d63;
-      font-size: 1.05rem;
-    }
-
-    .pharmacy-box p {
-      margin: 0;
-      color: var(--muted);
-      font-size: .9rem;
-      line-height: 1.45;
-    }
-
-    .pharmacy-resource {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      padding: 18px 20px;
-      border-left: 1px solid rgba(18,63,73,.12);
-    }
-
-    .pharmacy-resource strong { font-size: .92rem; line-height: 1.3; }
-    .pharmacy-resource span { margin: 3px 0 8px; color: var(--muted); font-size: .82rem; }
-    .pharmacy-resource a { color: #0f6670; font-size: .86rem; font-weight: 780; }
+    .hospital-box { margin-top: 16px; background: #fcf6ee; border-color: #ead9c8; }
+    .pharmacy-intro { display: flex; gap: 16px; align-items: center; padding: 6px 10px 6px 2px; min-width: 0; }
+    .pharmacy-symbol { width: 48px; height: 48px; flex: 0 0 48px; display: grid; place-items: center; border-radius: 16px; background: #d8eeeb; color: #0d6268; font-size: 1.8rem; font-weight: 800; }
+    .hospital-symbol { background: #f5dfcb; color: #a34f31; font-size: 1.3rem; }
+    .pharmacy-box h3 { margin: 0 0 7px; color: #0e5d63; font-size: 1.06rem; line-height: 1.3; }
+    .pharmacy-box p { margin: 0; color: var(--muted); font-size: .88rem; line-height: 1.5; }
+    .pharmacy-resource { display: flex; flex-direction: column; align-items: flex-start; justify-content: center; min-width: 0; padding: 20px; border: 1px solid rgba(18,63,73,.1); border-radius: 16px; background: rgba(255,255,255,.88); }
+    .pharmacy-resource strong { font-size: .96rem; line-height: 1.35; }
+    .pharmacy-resource span { margin: 5px 0 16px; color: var(--muted); font-size: .82rem; line-height: 1.45; }
+    .pharmacy-resource a { color: #0f6670; font-size: .86rem; font-weight: 780; text-decoration: none; padding: 7px 0; }
+    .pharmacy-resource a:hover { text-decoration: underline; text-underline-offset: 4px; }
+    .hospital-box .pharmacy-resource:first-of-type a { font-weight: 800; }
 
     .emergency {
       margin-top: 20px;
@@ -1006,11 +955,10 @@
 
       .pharmacy-intro {
         grid-column: 1 / -1;
+        padding: 4px 2px 8px;
       }
 
-      .pharmacy-resource:nth-child(2) {
-        border-left: 0;
-      }
+
 
       .guide-grid {
         grid-template-columns: 1fr;
@@ -1118,14 +1066,11 @@
 
       .pharmacy-intro {
         grid-column: auto;
-        padding: 18px;
+        padding: 2px 0 8px;
       }
 
-      .pharmacy-resource,
-      .pharmacy-resource:nth-child(2) {
-        border-top: 1px solid rgba(18,63,73,.12);
-        border-left: 0;
-      }
+      .pharmacy-box { padding: 16px; gap: 10px; }
+      .pharmacy-resource { padding: 17px 18px; }
 
       .guide-card {
         padding: 20px;
@@ -1313,7 +1258,7 @@
               <div class="pharmacy-symbol" aria-hidden="true">+</div>
               <div>
                 <h3 data-i18n="pharmacy_title">On-duty pharmacies in Athens</h3>
-                <p data-i18n="pharmacy_text">Check which pharmacies are open now or on duty near your location.</p>
+                <p data-i18n="pharmacy_text">Find a pharmacy open now.</p>
               </div>
             </div>
             <div class="pharmacy-resource">
@@ -1326,11 +1271,7 @@
               <span data-i18n="on_duty_label">On-duty pharmacies</span>
               <a href="https://www.vrisko.gr/efimeries-farmakeion/athina/" target="_blank" rel="noopener">vrisko.gr ↗</a>
             </div>
-            <div class="pharmacy-resource">
-              <strong>XO.gr</strong>
-              <span data-i18n="on_duty_label">On-duty pharmacies</span>
-              <a href="https://www.xo.gr/efimerevonta-farmakeia/athina/" target="_blank" rel="noopener">xo.gr ↗</a>
-            </div>
+
           </div>
 
           <div class="pharmacy-box hospital-box">
@@ -1338,13 +1279,18 @@
               <div class="pharmacy-symbol hospital-symbol" aria-hidden="true">H</div>
               <div>
                 <h3 data-i18n="hospital_title">On-duty hospitals in Athens</h3>
-                <p data-i18n="hospital_text">Check which public hospitals and departments are on duty today before travelling.</p>
+                <p data-i18n="hospital_text">Find a hospital on duty.</p>
               </div>
             </div>
             <div class="pharmacy-resource">
-              <strong data-i18n="hospital_service">Attica hospital duty service</strong>
-              <span data-i18n="hospital_service_text">Live map, specialties, dates and contact numbers</span>
-              <a href="/hospitals/" data-i18n="hospital_open">Open map and duty list →</a>
+              <strong data-i18n="hospital_service">Duty map</strong>
+              <span data-i18n="hospital_service_text">Specialties, hours and phone numbers</span>
+              <a href="/hospitals/" data-i18n="hospital_open">Open map →</a>
+            </div>
+            <div class="pharmacy-resource">
+              <strong>Efimeries.gov.gr</strong>
+              <span data-i18n="hospital_search_label">Hospital duty search</span>
+              <a href="https://efimeries.gov.gr/" target="_blank" rel="noopener" data-i18n="hospital_search_open">Open search ↗</a>
             </div>
 
           </div>
@@ -1483,18 +1429,19 @@
         read_more: "Read more →",
         more_information: "View all useful articles →",
         pharmacy_title: "On-duty pharmacies in Athens",
-        pharmacy_text: "Check which pharmacies are open now or on duty near your location.",
+        pharmacy_text: "Find a pharmacy open now.",
         pharmacy_official_name: "Pharmaceutical Association of Attica",
         official_site: "Official service",
         on_duty_label: "On-duty pharmacies",
         hospital_title: "On-duty hospitals in Athens",
-        hospital_service: "Attica hospital duty service",
-        hospital_service_text: "Live map, specialties, dates and contact numbers",
-        hospital_open: "Open map and duty list →",
-        hospital_text: "Check which public hospitals and departments are on duty today before travelling.",
+        hospital_service: "Duty map",
+        hospital_service_text: "Specialties, hours and phone numbers",
+        hospital_open: "Open map →",
+        hospital_text: "Find a hospital on duty.",
         hospital_ministry: "Ministry of Health",
         hospital_official_label: "Official duty schedule",
         hospital_search_label: "Hospital duty search",
+        hospital_search_open: "Open search ↗",
         hospital_list_label: "Today’s on-duty hospitals",
         emergency_title: "Emergency medical care",
         emergency_text: "For a life-threatening emergency, call 112 or 166 immediately.",
@@ -1583,18 +1530,19 @@
         read_more: "Διαβάστε περισσότερα →",
         more_information: "Δείτε όλα τα χρήσιμα άρθρα →",
         pharmacy_title: "Εφημερεύοντα φαρμακεία στην Αθήνα",
-        pharmacy_text: "Δείτε ποια φαρμακεία είναι ανοιχτά ή εφημερεύουν κοντά στην τοποθεσία σας.",
+        pharmacy_text: "Βρείτε ανοιχτό φαρμακείο.",
         pharmacy_official_name: "Φαρμακευτικός Σύλλογος Αττικής",
         official_site: "Επίσημη υπηρεσία",
         on_duty_label: "Εφημερεύοντα φαρμακεία",
         hospital_title: "Εφημερεύοντα νοσοκομεία στην Αθήνα",
-        hospital_service: "Εφημερίες νοσοκομείων Αττικής",
-        hospital_service_text: "Διαδραστικός χάρτης, ειδικότητες, ημερομηνίες και τηλέφωνα",
-        hospital_open: "Χάρτης και λίστα εφημεριών →",
-        hospital_text: "Ελέγξτε ποια δημόσια νοσοκομεία και τμήματα εφημερεύουν σήμερα πριν μεταβείτε.",
+        hospital_service: "Χάρτης εφημεριών",
+        hospital_service_text: "Ειδικότητες, ώρες και τηλέφωνα",
+        hospital_open: "Άνοιγμα χάρτη →",
+        hospital_text: "Βρείτε εφημερεύον νοσοκομείο.",
         hospital_ministry: "Υπουργείο Υγείας",
         hospital_official_label: "Επίσημο πρόγραμμα εφημεριών",
-        hospital_search_label: "Αναζήτηση εφημερεύοντος νοσοκομείου",
+        hospital_search_label: "Αναζήτηση νοσοκομείου",
+        hospital_search_open: "Άνοιγμα αναζήτησης ↗",
         hospital_list_label: "Σημερινά εφημερεύοντα νοσοκομεία",
         emergency_title: "Επείγουσα ιατρική βοήθεια",
         emergency_text: "Σε απειλητικό για τη ζωή περιστατικό, καλέστε αμέσως 112 ή 166.",
@@ -1683,18 +1631,19 @@
         read_more: "Читать дальше →",
         more_information: "Все полезные статьи →",
         pharmacy_title: "Дежурные аптеки Афин",
-        pharmacy_text: "Проверьте, какие аптеки сейчас открыты или дежурят рядом с вами.",
+        pharmacy_text: "Найдите открытую аптеку.",
         pharmacy_official_name: "Фармацевтическая ассоциация Аттики",
         official_site: "Официальный сервис",
         on_duty_label: "Дежурные аптеки",
         hospital_title: "Дежурные больницы Афин",
-        hospital_service: "Дежурные больницы Аттики",
-        hospital_service_text: "Живая карта, специальности, даты и телефоны",
-        hospital_open: "Открыть карту и список дежурств →",
-        hospital_text: "Перед поездкой проверьте, какие государственные больницы и отделения дежурят сегодня.",
+        hospital_service: "Карта дежурств",
+        hospital_service_text: "Специальности, часы и телефоны",
+        hospital_open: "Открыть карту →",
+        hospital_text: "Найдите дежурную больницу.",
         hospital_ministry: "Министерство здравоохранения",
         hospital_official_label: "Официальный график дежурств",
         hospital_search_label: "Поиск дежурной больницы",
+        hospital_search_open: "Открыть поиск ↗",
         hospital_list_label: "Дежурные больницы сегодня",
         emergency_title: "Экстренная медицинская помощь",
         emergency_text: "При угрозе жизни немедленно звоните 112 или 166.",

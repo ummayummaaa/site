@@ -838,6 +838,7 @@
     }
 
     .hospital-box {
+      display: block;
       margin-top: 14px;
       background: linear-gradient(90deg, #f6ebdd 0%, #fffaf4 65%, #ffffff 100%);
       border-color: #ead9c8;
@@ -861,6 +862,11 @@
       color: #0c7478;
       font-size: 2rem;
       font-weight: 900;
+    }
+
+    .hospital-box .pharmacy-resource {
+      border-left: 0;
+      border-top: 1px solid rgba(18,63,73,.12);
     }
 
     .hospital-symbol {
@@ -1340,21 +1346,7 @@
               <span data-i18n="hospital_service_text">Live map, specialties, dates and contact numbers</span>
               <a href="/hospitals/" data-i18n="hospital_open">Open map and duty list →</a>
             </div>
-            <div class="pharmacy-resource">
-              <strong data-i18n="hospital_ministry">Ministry of Health</strong>
-              <span data-i18n="hospital_official_label">Official duty schedule</span>
-              <a href="https://www.moh.gov.gr/articles/citizen/efhmeries-nosokomeiwn/" target="_blank" rel="noopener">moh.gov.gr ↗</a>
-            </div>
-            <div class="pharmacy-resource">
-              <strong>Efimeries.gov.gr</strong>
-              <span data-i18n="hospital_search_label">Hospital duty search</span>
-              <a href="https://efimeries.gov.gr/" target="_blank" rel="noopener">efimeries.gov.gr ↗</a>
-            </div>
-            <div class="pharmacy-resource">
-              <strong>XO.gr</strong>
-              <span data-i18n="hospital_list_label">Today’s on-duty hospitals</span>
-              <a href="https://www.xo.gr/hospitals-on-duty/athens/" target="_blank" rel="noopener">xo.gr ↗</a>
-            </div>
+
           </div>
         </div>
       </div>

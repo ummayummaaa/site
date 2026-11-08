@@ -78,13 +78,6 @@ window.antibioticsArticle = {
         ]
       ],
       [
-        "How much does a doctor home visit cost in Athens?",
-        [
-          "For home visits provided by Dr. Ioannis Kotidis, the daytime consultation is €100 and the night-time consultation is €120. Additional diagnostic tests or procedures may involve separate charges. Confirm the applicable fee when booking.",
-          "The consultation includes medical assessment and treatment recommendations. Antibiotics are prescribed only when clinically indicated and in accordance with applicable rules."
-        ]
-      ],
-      [
         "Need medical assistance during your stay in Athens?",
         [
           "Dr. Ioannis Kotidis provides private medical consultations and home visits for international visitors staying in Athens, including hotels, Airbnb apartments and holiday rentals.",
@@ -163,13 +156,6 @@ window.antibioticsArticle = {
         ]
       ],
       [
-        "Сколько стоит вызов врача в Афинах?",
-        [
-          "Дневной выезд доктора Иоанниса Котидиса стоит €100, ночной — €120. Исследования и дополнительные процедуры могут оплачиваться отдельно. Уточняйте итоговую стоимость при записи.",
-          "Консультация включает медицинскую оценку и рекомендации. Антибиотики назначают только по показаниям и с соблюдением правил выписки."
-        ]
-      ],
-      [
         "Нужна медицинская помощь во время поездки?",
         [
           "Доктор Иоаннис Котидис проводит частные консультации и выезжает к иностранным гостям Афин в отели, квартиры Airbnb и другое арендованное жильё.",
@@ -245,13 +231,6 @@ window.antibioticsArticle = {
         [
           "Εκτός του κανονικού ωραρίου, εφημερεύοντα φαρμακεία εξυπηρετούν βράδια, νύχτες, Σαββατοκύριακα και αργίες.",
           "Χρησιμοποιήστε τον χάρτη εφημερευόντων φαρμακείων παρακάτω και ελέγξτε τις ώρες εφημερίας. Το ανοιχτό φαρμακείο εξακολουθεί να χρειάζεται έγκυρη συνταγή για να χορηγήσει συνταγογραφούμενα αντιβιοτικά."
-        ]
-      ],
-      [
-        "Πόσο κοστίζει η κατ’ οίκον επίσκεψη στην Αθήνα;",
-        [
-          "Η ημερήσια επίσκεψη του ιατρού Ιωάννη Κοτίδη κοστίζει €100 και η νυχτερινή €120. Πρόσθετες εξετάσεις ή πράξεις ενδέχεται να χρεώνονται χωριστά. Επιβεβαιώστε τη χρέωση κατά την κράτηση.",
-          "Η επίσκεψη περιλαμβάνει ιατρική εκτίμηση και θεραπευτικές οδηγίες. Αντιβιοτικά συνταγογραφούνται μόνο όταν ενδείκνυνται και σύμφωνα με τους ισχύοντες κανόνες."
         ]
       ],
       [

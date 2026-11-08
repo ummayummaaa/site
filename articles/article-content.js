@@ -317,7 +317,7 @@ function setLanguage(lang) {
 
   const grid = element("content-grid");
   grid.replaceChildren();
-  content.sections.forEach(([title, items], sectionIndex) => {
+  content.sections.forEach(([title, items, sectionLink], sectionIndex) => {
     const block = document.createElement("section");
     block.className = "content-block";
     const heading = document.createElement("h2");
@@ -329,6 +329,15 @@ function setLanguage(lang) {
       item.textContent = text;
       contentWrapper.append(item);
     });
+    if (sectionLink) {
+      const paragraph = document.createElement("p");
+      const link = document.createElement("a");
+      link.textContent = sectionLink[0];
+      link.href = sectionLink[1];
+      link.className = "action";
+      paragraph.append(link);
+      contentWrapper.append(paragraph);
+    }
     block.append(heading, contentWrapper);
     grid.append(block);
 

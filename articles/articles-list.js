@@ -5,6 +5,7 @@ const copy = {
 };
 // Full article sources are preserved under _drafts/before-article-hide-20261027/.
 const articles = [
+  { topic:"antibiotics", icon:"Rx", en:["How to Buy Antibiotics in Greece","Prescriptions, pharmacies and medical help for travellers."], el:["Πώς να αγοράσετε αντιβιοτικά στην Ελλάδα","Συνταγές, φαρμακεία και ιατρική βοήθεια για ταξιδιώτες."], ru:["Как купить антибиотики в Греции","Рецепты, аптеки и помощь врача для путешественников."] },
   { topic:"ear", icon:"◖", en:["Ear pain while on vacation","Common causes and how to get relief."], el:["Πόνος στο αυτί στις διακοπές","Συχνές αιτίες και τρόποι ανακούφισης."], ru:["Боль в ухе во время отпуска","Частые причины и способы облегчить состояние."] }
 ];
 const el = id => document.getElementById(id);
@@ -12,7 +13,7 @@ function setLanguage(lang) {
   const safe = copy[lang] ? lang : "en", t = copy[safe];
   document.documentElement.lang = safe; document.title = `${t.title} — Ioannis Kotidis`; localStorage.setItem("siteLanguage", safe);
   el("doctor-name").textContent=t.doctor; el("doctor-title").textContent=t.role; el("header-call").textContent=t.call; el("back-link").textContent=t.back; el("eyebrow").textContent=t.eyebrow; el("page-title").textContent=t.title; el("page-intro").textContent=t.intro; el("emergency-title").textContent=t.emergency; el("emergency-text").textContent=t.emergencyText;
-  el("article-list").replaceChildren(...articles.map(a => { const link=document.createElement("a"); link.className="list-card"; link.href=`article.html?topic=${a.topic}`; link.innerHTML=`<span class="list-icon" aria-hidden="true">${a.icon}</span><strong>${a[safe][0]}</strong><p>${a[safe][1]}</p><span class="list-more">${t.read}</span>`; return link; }));
+  el("article-list").replaceChildren(...articles.map(a => { const link=document.createElement("a"); link.className="list-card"; link.href=a.topic==="antibiotics" ? "how-to-buy-antibiotics-in-greece.html" : `article.html?topic=${a.topic}`; link.innerHTML=`<span class="list-icon" aria-hidden="true">${a.icon}</span><strong>${a[safe][0]}</strong><p>${a[safe][1]}</p><span class="list-more">${t.read}</span>`; return link; }));
   document.querySelectorAll(".lang-btn").forEach(b=>b.classList.toggle("active",b.dataset.lang===safe));
 }
 document.querySelectorAll(".lang-btn").forEach(b=>b.addEventListener("click",()=>setLanguage(b.dataset.lang)));

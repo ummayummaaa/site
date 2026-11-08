@@ -273,8 +273,9 @@ Object.keys(earSectionTitles).forEach((lang) => {
   ];
 });
 
-const topic = new URLSearchParams(window.location.search).get("topic");
-const article = topic === "ear" ? articles.ear : null;
+if (window.antibioticsArticle) articles.antibiotics = window.antibioticsArticle;
+const topic = document.body.dataset.topic || new URLSearchParams(window.location.search).get("topic");
+const article = Object.hasOwn(articles, topic) ? articles[topic] : null;
 if (!article) window.location.replace("./");
 const element = (id) => document.getElementById(id);
 
@@ -286,6 +287,7 @@ function setLanguage(lang) {
 
   document.documentElement.lang = safeLang;
   document.title = `${content.title} — Ioannis Kotidis`;
+  document.querySelector('meta[name="description"]').content = content.intro;
   localStorage.setItem("siteLanguage", safeLang);
 
   element("doctor-name").textContent = labels.doctorName;
@@ -307,7 +309,7 @@ function setLanguage(lang) {
   }
   element("emergency-title").textContent = labels.emergencyTitle;
   element("emergency-text").textContent = labels.emergencyText;
-  element("call-doctor").textContent = labels.callDoctor;
+  element("call-doctor").textContent = topic === "antibiotics" ? ({en:"Request a doctor home visit", el:"Ζητήστε κατ’ οίκον επίσκεψη", ru:"Вызвать врача"})[safeLang] : labels.callDoctor;
   element("pharmacy-link").textContent = labels.pharmacy;
   element("emergency-link").textContent = labels.emergency;
   element("medical-note").textContent = labels.note;
@@ -330,7 +332,7 @@ function setLanguage(lang) {
     block.append(heading, contentWrapper);
     grid.append(block);
 
-    if (hasMedia && sectionIndex === 3) {
+    if (hasMedia && article.media.inline && sectionIndex === 3) {
       const figure = document.createElement("figure");
       figure.className = "article-media inline-media";
       const image = document.createElement("img");
